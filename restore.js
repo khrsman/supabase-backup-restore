@@ -58,12 +58,22 @@ const dataFile   = path.join(dir, 'data.sql');
 console.log(`\nRestoring from: ${dir}\n`);
 
 // Clean dulu sebelum restore
-console.log('Cleaning database before restore...');
-execSync(
-  `psql "${DATABASE_URL}" --no-psqlrc -c "DROP SCHEMA public CASCADE; CREATE SCHEMA public;"`,
-  { stdio: 'inherit' }
-);
-console.log('Database cleaned\n');
+// console.log('Cleaning database before restore...');
+// execSync(
+//   `psql "${DATABASE_URL}" --no-psqlrc -c "DROP SCHEMA public CASCADE; CREATE SCHEMA public;"`,
+//   { stdio: 'inherit' }
+// );
+// console.log('Database cleaned\n');
+
+
+// jalankan manual di supbase studio nya
+// DROP SCHEMA public CASCADE; 
+// CREATE SCHEMA public;
+
+// grant all on schema public to postgres;
+// grant all on schema public to anon;
+// grant all on schema public to authenticated;
+// grant all on schema public to service_role;
 
 // Restore roles dulu, lalu schema, lalu data — urutan penting!
 const steps = [
